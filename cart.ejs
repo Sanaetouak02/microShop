@@ -1,0 +1,48 @@
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Cart - My Shop</title>
+    <link rel="stylesheet" href="/css/cart.css">
+  </head>
+  <body>
+    <h1>My Cart</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>Subtotal</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% products.forEach(product => { %>
+        <tr>
+          <td><%= product.name %></td>
+          <td><%= product.price %></td>
+          <td>
+            <form action="/cart/update" method="POST">
+              <input type="hidden" name="productId" value="<%= product.id %>">
+              <input type="number" name="quantity" value="<%= product.quantity %>" min="1">
+              <button type="submit">Update</button>
+            </form>
+          </td>
+          <td><%= product.subtotal %></td>
+        </tr>
+        <% }); %>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="3">Total:</td>
+          <td><%= total %></td>
+        </tr>
+      </tfoot>
+    </table>
+    <form action="/checkout" method="POST">
+      <button type="submit">Checkout</button>
+    </form>
+  </body>
+</html>
+

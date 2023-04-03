@@ -1,0 +1,821 @@
+<%- include('includes/header');%>
+<style>
+   :root{
+    --pink:darkcyan;
+    
+}
+
+*{
+    margin:0; padding:0;
+    box-sizing: border-box;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    outline: none; border:none;
+    text-decoration: none;
+    text-transform: capitalize;
+    transition: .2s linear;
+}
+
+html{
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
+    overflow-x: hidden;
+}
+
+section{
+    padding:2rem 9%;
+}
+
+.heading{
+    text-align: center;
+    font-size: 4rem;
+    color:#333;
+    padding:1rem;
+    margin:2rem 0;
+    background:rgba(255, 51, 153,.05);
+}
+
+.heading span{
+    color:var(--pink);
+}
+
+.btn{
+    display: inline-block;
+    margin-top: 1rem;
+    border-radius: 5rem;
+    background:#333;
+    color:#fff;
+    padding:.9rem 3.5rem;
+    cursor: pointer;
+    font-size: 1.7rem;
+}
+.btn:hover{
+    background:var(--darkcyan);
+    background-color:  darkcyan;
+}
+
+header{
+    position: fixed;
+    top:0; left:0; right:0;
+    background:#fff;
+    padding:2rem 9%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1000;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.1);
+}
+header .logo{
+    font-size: 3rem;
+    color: darkcyan;
+    font-weight: bolder;
+}
+
+
+header .navbar a{
+    font-size: 2rem;
+    padding:0 1.5rem;
+    color:#666;
+}
+
+header .navbar a:hover{
+    color:darkcyan;
+}
+
+header .icons a{
+    font-size: 2.5rem;
+    color:#333;
+    margin-left: 1.5rem;
+}
+
+header .icons a:hover{
+    color:darkcyan;
+}
+
+header #toggler{
+    display: none;
+}
+
+header .fa-bars{
+    font-size: 3rem;
+    color:#333;
+    border-radius: .5rem;
+    padding:.5rem 1.5rem;
+    cursor: pointer;
+    border:.1rem solid rgba(0,0,0,.3);
+    display: none;
+}
+.home{
+    display: flex;
+    align-items: center;
+    min-height: 100vh;
+    background:url(320331365_858820092099869_1678847420189753638_n.jpg) no-repeat;
+    
+    background-position:right;
+}
+
+.home .content{
+    max-width: 50rem;
+}
+
+.home .content h3{
+    font-size: 6rem;
+    color:#333;
+    font-family: initial;
+}
+
+.home .content span{
+    font-size: 3.5rem;
+    color:var(--pink);
+    padding:1rem 0;
+    line-height: 1.5;
+}
+
+.home .content p{
+    font-size: 1.5rem;
+    color:#999;
+    padding:1rem 0;
+    line-height: 1.5;
+}
+.about .row{
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    padding: 2rem 0;
+    padding-bottom: 3rem;
+}
+.about .row .video-container{
+    flex: 1  1 25rem ;
+    position:relative;
+}
+.about .row .video-container h3{
+    position:absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 3rem;
+    background-color: #fff;
+    width: 100%;
+    padding: 1rem 2rem;
+    text-align: center;
+    mix-blend-mode: screen;
+}
+.about .row .video-container video{
+    width: 100%;
+    border: 1.5rem solid #fff;
+    border-radius:2rem ;
+    box-shadow: 0.5rem 0.5rem #999;
+    height: 100%;
+    object-fit: cover;
+}
+.about .row .content{
+    flex: 1 1 40rem ;
+    padding: 75px;
+}
+.about .row .content h3{
+    font-size: 3rem;
+    color: #333;
+
+}
+.about .row .content p{
+    font-size:25px;
+    color: #999;
+    padding: 15 15 15 15;
+    padding-top: 15px;
+    line-height: 1.5;
+}
+.icons-container{
+    background:#eee;
+    display: flex;
+    flex-wrap: wrap;
+    gap:1.5rem;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
+
+.icons-container .icons{
+    background:#fff;
+    border:.1rem solid rgba(0,0,0,.1);
+    padding:2rem;
+    display: flex;
+    align-items: center;
+    flex:1 1 25rem;
+}
+
+.icons-container .icons img{
+    height:5rem;
+    margin-right: 2rem;
+}
+
+.icons-container .icons h3{
+    color:#333;
+    padding-bottom: .5rem;
+    font-size: 1.5rem;
+}
+
+.icons-container .icons span{
+    color:#555;
+    font-size: 1.3rem;
+}
+
+.products .box-container{
+    display: flex;
+    flex-wrap: wrap;
+    gap:1.5rem;
+}
+
+.products .box-container .box{
+    flex:1 1 30rem;
+    box-shadow: 0 .5rem 1.5rem rgba(0,0,0,.1);
+    border-radius: .5rem;
+    border:.1rem solid rgba(0,0,0,.1);
+    position: relative;    
+}
+
+.products .box-container .box .discount{
+    position: absolute;
+    top:1rem; left:1rem;
+    padding:.7rem 1rem;
+    font-size: 2rem;
+    color:var(--pink);
+    background:rgba(255, 51, 153,.05);
+    z-index: 1;
+    border-radius: .5rem;
+}
+
+.products .box-container .box .image{
+    position: relative;
+    text-align: center;
+    padding-top: 2rem;
+    overflow:hidden;
+}
+
+.products .box-container .box .image img{
+    height:25rem;
+}
+
+.products .box-container .box:hover .image img{
+    transform: scale(1.1);
+}
+
+.products .box-container .box .image .icons{
+    position: absolute;
+    bottom:-7rem; left:0; right:0;
+    display: flex;
+}
+
+.products .box-container .box:hover .image .icons{
+    bottom:0;
+}
+
+.products .box-container .box .image .icons a{
+    height: 5rem;
+    line-height: 5rem;
+    font-size: 2rem;
+    width:50%;
+    background:var(--pink);
+    color:#fff;
+}
+
+.products .box-container .box .image .icons .cart-btn{
+    border-left: .1rem solid #fff7;
+    border-right: .1rem solid #fff7;
+    width:100%;
+}
+
+.products .box-container .box .image .icons a:hover{
+    background:#333;
+}
+
+.products .box-container .box .content{
+    padding:2rem;
+    text-align: center;
+}
+
+.products .box-container .box .content h3{
+    font-size: 2.5rem;
+    color:#333;
+}
+
+.products .box-container .box .content .price{
+    font-size: 2.5rem;
+    color:var(--pink);
+    font-weight: bolder;
+    padding-top: 1rem;
+}
+
+.products .box-container .box .content .price span{
+    font-size: 1.5rem;
+    color:#999;
+    font-weight: lighter;
+    text-decoration: line-through;
+}
+.footer .box-container{
+    display: flex;
+    flex-wrap: wrap;
+    gap:1.5rem;
+}
+
+.footer .box-container .box{
+    flex:1 1 25rem;
+}
+
+.footer .box-container .box h3{
+    color:#333;
+    font-size: 2.5rem;
+    padding:1rem 0;
+}
+
+.footer .box-container .box a{
+    display: block;
+    color:#666;
+    font-size: 1.5rem;
+    padding:1rem 0;
+}
+
+.footer .box-container .box a:hover{
+    color:var(--pink);
+    text-decoration: underline;
+}
+
+.footer .box-container .box  img{
+    margin-top: 1rem;
+}
+
+.footer .credit{
+    text-align: center;
+    padding:1.5rem;
+    margin-top: 1.5rem;
+    padding-top: 2.5rem;
+    font-size: 2rem;
+    color:#333;
+    border-top: .1rem solid rgba(0,0,0,.1);
+    padding-bottom: 9rem;
+}
+
+.footer .credit span{
+    color:var(--pink);
+}
+.rev-section {
+    margin: auto;
+    padding: 0 1rem;
+    max-width: 1100px;
+    text-align: center;
+}
+
+
+.reviews {
+    margin: 2rem auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.review {
+    margin: 0 1rem;
+    min-width: 300px;
+    flex: 1;
+}
+
+.head-review {
+    margin: 1.75rem auto;
+    width: 150px;
+    height: 150px;
+}
+
+.imgrev {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, .25);
+}
+
+.body-review {
+    background-color: rgb(238, 238, 238);
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.name-review {
+    font-size: 1.5rem;
+    color: rgb(50, 50, 50);
+    margin-bottom: .25rem;
+}
+
+.place-review {
+    color: violet;
+    font-style: italic;
+}
+
+.rating {
+    color: rgb(253, 180, 42);
+    margin: 1rem 0;
+}
+
+.desc-review {
+    line-height: 1rem;
+    letter-spacing: 1px;
+    color: rgb(150, 150, 150);
+}
+
+
+.contact .row{
+    display: flex;
+    flex-wrap: wrap-reverse;
+    gap:1.5rem;
+    align-items: center;
+}
+
+.contact .row form{
+    flex:1 1 40rem;
+    padding:2rem 2.5rem;
+    box-shadow: 0 .5rem 1.5rem rgba(0,0,0,.1);
+    border:.1rem solid rgba(0,0,0,.1);
+    background: #fff;
+    border-radius: .5rem;
+}
+
+.contact .row .image{
+    flex:1 1 40rem;
+}
+
+.contact .row .image img{
+    width: 100%;
+}
+
+.contact .row form .box{
+    padding:1rem;
+    font-size: 1.7rem;
+    color:#333;
+    text-transform: none;
+    border:.1rem solid rgba(0,0,0,.1);
+    border-radius: .5rem;
+    margin:.7rem 0;
+    width: 100%;
+}
+
+.contact .row form .box:focus{
+    border-color: var(darkcyan);
+}
+
+.contact .row form textarea{
+    height: 15rem;
+    resize: none;
+}
+</style>
+<body>
+   
+   <header>
+      <input type="checkbox" name="" id="toggler">
+      <label for="toggler" class="fas fa-bars"></label>
+      <a href="#" class="logo">H-shirt<span>.</span></a>
+  
+      <nav class="navbar">
+          <a href="#home">home</a>
+          <a href="#about">about</a>
+          <a href="#products">products</a>
+          <a href="#reviews">review</a>
+          <a href="#contact">contact</a>
+      </nav>
+      <div class="icons">
+          <a href="#" class="fas fa-heart"></a>
+          <a href="#" class="fas fa-shopping-cart"></a>
+          <a href="#" class="fas fa-user"></a>
+      </div>
+   </header> 
+   
+<section class="home" id="home">
+
+    <div class="content">
+        <h3>Hindam-Shirt</h3>
+        <span> It's fascinating how you're going to look like it ! </span>
+        <p>the t-shirt will make you look amazing </p>
+        <a href="#" class="btn">shop now</a>
+    </div>
+    
+</section>
+<section class="about" id="about">
+    <h1 class="heading"><span>About</span> Us</h1>
+    <div class="row">
+       <div class="video-container">
+         <video src="about.mp4"  loop autoplay muted></video>
+         <h3> Best H-shirts sellers</h3>
+       </div>
+       <div class="content">
+        <h3> Why choose us?</h3>
+         <p>We are  a commercial entreprise whose would to product heigh quality and affordable clothing that provides you with all kinds and colors according to your choices only with one click</p>
+        <br>
+         <p>                                                         </p>
+      
+         <a href="#"class="btn">Learn more</a>
+       </div>
+    </div>
+</section>
+<section class="icons-container">
+
+    <div class="icons">
+        <img src="images/icon-1.png" alt="">
+        <div class="info">
+            <h3>free delivery</h3>
+            <span>on all orders</span>
+        </div>
+    </div>
+
+    <div class="icons">
+        <img src="images/icon-2.png" alt="">
+        <div class="info">
+            <h3>10 days returns</h3>
+            <span>moneyback guarantee</span>
+        </div>
+    </div>
+
+    <div class="icons">
+        <img src="images/icon-3.png" alt="">
+        <div class="info">
+            <h3>offer & gifts</h3>
+            <span>on all orders</span>
+        </div>
+    </div>
+
+    <div class="icons">
+        <img src="images/icon-4.png" alt="">
+        <div class="info">
+            <h3>secure paymens</h3>
+            <span>protected by paypal</span>
+        </div>
+    </div>
+   
+</section>
+
+<!-- icons section ends -->
+
+   <!-- prodcuts section starts  -->
+
+<section class="products" id="products">
+
+    <h1 class="heading"> latest <span>products</span> </h1>
+
+    <div class="box-container">
+
+        <div class="box">
+            <span class="discount">-10%</span>
+            <div class="image">
+                <img src="img vert.jpg" alt="">
+                <div class="icons">
+                    <a href="#" class="fas fa-heart"></a>
+                    <a href="#" class="cart-btn">add to cart</a>
+                    <a href="#" class="fas fa-share"></a>
+                </div>
+            </div>
+            <div class="content">
+                <h3>t-shirt</h3>
+                <div class="price"> 1400DA <span>17400.DA</span> </div>
+            </div>
+        </div>
+
+        <div class="box">
+            <span class="discount">-15%</span>
+            <div class="image">
+                <img src="img move.jpg" alt="">
+                <div class="icons">
+                    <a href="#" class="fas fa-heart"></a>
+                    <a href="#" class="cart-btn">add to cart</a>
+                    <a href="#" class="fas fa-share"></a>
+                </div>
+            </div>
+            <div class="content">
+                <h3>t-shirt</h3>
+                <div class="price"> 1500DA <span>2250DA</span> </div>
+            </div>
+        </div>
+
+        <div class="box">
+            <span class="discount">-5%</span>
+            <div class="image">
+                <img src="img orange.jpg" alt="">
+                <div class="icons">
+                    <a href="#" class="fas fa-heart"></a>
+                    <a href="#" class="cart-btn">add to cart</a>
+                    <a href="#" class="fas fa-share"></a>
+                </div>
+            </div>
+            <div class="content">
+                <h3>t-shirt</h3>
+                <div class="price"> 1800DA <span>2000DA</span> </div>
+            </div>
+        </div>
+
+        <div class="box">
+            <span class="discount">-20%</span>
+            <div class="image">
+                <img src="noir.jpeg" alt="">
+                <div class="icons">
+                    <a href="#" class="fas fa-heart"></a>
+                    <a href="#" class="cart-btn">add to cart</a>
+                    <a href="#" class="fas fa-share"></a>
+                </div>
+            </div>
+            <div class="content">
+                <h3>t-shirt</h3>
+                <div class="price"> 2500DA <span>2000DA</span> </div>
+            </div>
+        </div>
+
+        <div class="box">
+            <span class="discount">-17%</span>
+            <div class="image">
+                <img src="img brique.jpg" alt="">
+                <div class="icons">
+                    <a href="#" class="fas fa-heart"></a>
+                    <a href="#" class="cart-btn">add to cart</a>
+                    <a href="#" class="fas fa-share"></a>
+                </div>
+            </div>
+            <div class="content">
+                <h3>t-shirt</h3>
+                <div class="price">1800DA <span>2090DA</span> </div>
+            </div>
+        </div>
+
+        <div class="box">
+            <span class="discount">-3%</span>
+            <div class="image">
+                <img src="img bleu.jpg" alt="">
+                <div class="icons">
+                    <a href="#" class="fas fa-heart"></a>
+                    <a href="#" class="cart-btn">add to cart</a>
+                    <a href="#" class="fas fa-share"></a>
+                </div>
+            </div>
+            <div class="content">
+                <h3>t-shirt</h3>
+                <div class="price">3100DA <span>3300DA</span> </div>
+            </div>
+        </div>
+
+        <div class="box">
+            <span class="discount">-18%</span>
+            <div class="image">
+                <img src="img baurdeau.jpg" alt="">
+                <div class="icons">
+                    <a href="#" class="fas fa-heart"></a>
+                    <a href="#" class="cart-btn">add to cart</a>
+                    <a href="#" class="fas fa-share"></a>
+                </div>
+            </div>
+            <div class="content">
+                <h3>t-shirt</h3>
+                <div class="price"> 1600DA <span>2880DA</span> </div>
+            </div>
+        </div>
+
+        <div class="box">
+            <span class="discount">-10%</span>
+            <div class="image">
+                <img src="img blanc.jpg" alt="">
+                <div class="icons">
+                    <a href="#" class="fas fa-heart"></a>
+                    <a href="#" class="cart-btn">add to cart</a>
+                    <a href="#" class="fas fa-share"></a>
+                </div>
+            </div>
+            <div class="content">
+                <h3>t-shirt</h3>
+                <div class="price">1600DA <span>1960DA</span> </div>
+            </div>
+        </div>
+
+        <div class="box">
+            <span class="discount">-5%</span>
+            <div class="image">
+                <img src="modele.jpeg" alt="">
+                <div class="icons">
+                    <a href="#" class="fas fa-heart"></a>
+                    <a href="#" class="cart-btn">add to cart</a>
+                    <a href="#" class="fas fa-share"></a>
+                </div>
+            </div>
+            <div class="content">
+                <h3>t-shirt</h3>
+                <div class="price"> 2500DA<span>2625DA</span> </div>
+            </div>
+        </div>
+        <div class="box">
+            <span class="discount">-20%</span>
+            <div class="image">
+                <img src="rouge.jpeg" alt="">
+                <div class="icons">
+                    <a href="#" class="fas fa-heart"></a>
+                    <a href="#" class="cart-btn">add to cart</a>
+                    <a href="#" class="fas fa-share"></a>
+                </div>
+            </div>
+            <div class="content">
+                <h3>t-shirt</h3>
+                <div class="price"> 2900DA <span>3100DA</span> </div>
+            </div>
+        </div>
+        <div class="box">
+            <span class="discount">-20%</span>
+            <div class="image">
+                <img src="bleu mix.jpeg" alt="">
+                <div class="icons">
+                    <a href="#" class="fas fa-heart"></a>
+                    <a href="#" class="cart-btn">add to cart</a>
+                    <a href="#" class="fas fa-share"></a>
+                </div>
+            </div>
+            <div class="content">
+                <h3>t-shirt</h3>
+                <div class="price">2500DA <span>3000DA</span> </div>
+            </div>
+        </div>
+        <div class="box">
+            <span class="discount">-20%</span>
+            <div class="image">
+                <img src="beige.jpeg" alt="">
+                <div class="icons">
+                    <a href="#" class="fas fa-heart"></a>
+                    <a href="#" class="cart-btn">add to cart</a>
+                    <a href="#" class="fas fa-share"></a>
+                </div>
+            </div>
+            <div class="content">
+                <h3>t-shirt</h3>
+                <div class="price"> 2800DA<span>3300DA</span> </div>
+            </div>
+        </div>
+       
+       
+    </div>
+
+</section>
+
+<!-- prodcuts section ends -->
+    <!-- footer section starts  -->
+
+<section class="footer">
+
+    <div class="box-container">
+
+        <div class="box">
+            <h3>quick links</h3>
+            <a href="#home">home</a>
+            <a href="#about">about</a>
+            <a href="#products">products</a>
+            <a href="#reviews">review</a>
+            <a href="#con tact">contact</a>
+        </div>
+
+        <div class="box">
+            <h3>extra links</h3>
+            <a href="#">my account</a>
+            <a href="#">my order</a>
+            <a href="#">my favorite</a>
+        </div>
+
+        <div class="box">
+            <h3>locations</h3>
+            <a href="#">alger</a>
+            <a href="#">Oran</a>
+            <a href="#">Annaba</a>
+            <a href="#">Blida</a>
+        </div>
+
+        <div class="box">
+            <h3>contact info</h3>
+            <a href="#">+123-456-7890</a>
+            <a href="#">example@gmail.com</a>
+            <a href="#">Alger,hassiba</a>
+            <img src="images/payment.png" alt="">
+        </div>
+
+    </div>
+
+    <div class="credit"> created by <span> mr. web designer </span> | all rights reserved </div>
+
+</section>
+
+<section class="contact" id="contact">
+
+    <h1 class="heading"> <span> contact </span> us </h1>
+
+    <div class="row">
+
+        <form action="">
+            <input type="text" placeholder="name" class="box">
+            <input type="email" placeholder="email" class="box">
+            <input type="number" placeholder="number" class="box">
+            <textarea name="" class="box" placeholder="message" id="" cols="30" rows="10"></textarea>
+            <input type="submit" value="send message" class="btn">
+        </form>
+
+        <div class="image">
+            <img src="321284375_488331166782941_202272321424934105_n.jpg" alt="">
+        </div>
+
+    </div>
+
+</section>
+<%- include('includes/footer');%>

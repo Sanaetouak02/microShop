@@ -1,0 +1,28 @@
+
+<%- include('includes/header');%>
+<%- include('includes/navbar');%>
+
+ 
+      <body>
+        
+       <div class="row"></div>
+       <h1><%= categoryName %> Products</h1>
+
+       <% if (products.length === 0) { %>
+         <p>No products found.</p>
+       <% } else { %>
+         <ul>
+           <% products.forEach(product => { %>
+             <li>
+               <h2><%= product.name %></h2>
+               <p><%= product.description %></p>
+               <p><%= product.price %></p>
+               <img src="<%= product.image %>">
+             </li>
+           <% }); %>
+         </ul>
+       <% } %>
+       </div>
+      </body>
+  
+<%- include('includes/footer');%>

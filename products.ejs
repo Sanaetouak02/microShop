@@ -1,0 +1,23 @@
+<%- include('includes/header');%>
+
+<%- include('includes/navbar');%>
+
+
+<h1>Products</h1>
+
+<div class="row">
+  <% products.forEach(function(product) { %>
+    <div class="col-md-4 mb-4">
+      <div class="card h-100">
+        <img class="card-img-top" src="<%= product.imageUrl %>" alt="<%= product.name %>">
+        <div class="card-body">
+          <h2 class="card-title"><%= product.name %></h2>
+          <p class="card-text"><%= product.description %></p>
+          <p class="card-text"><strong style="color: orange;">Price:</strong><%= product.price.toFixed(2) %> DZ</p>
+           <%- include('./includes/add-to-cart.ejs', {product: product}) %> 
+        </div>
+      </div>
+    </div>
+  <% }); %>
+</div>
+<%- include('includes/footer');%>
